@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>createuser</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+</head>
+
+<body>
+
+<div class="container">
+  <h2>User registration</h2>
+  <form id="form1" action='/createuser' onsubmit="transfer()" method="POST"> 
+  
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="name" class="form-control" id="name" placeholder="Enter name" name="name"><br/>
+    
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile:</label>
+      <input type="mobile" class="form-control" id="mobile" placeholder="Enter mobile number" name="mobile"><span id="numloc"></span><br/>  
+     
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter email" name="email"><br/>
+      
+      </div>
+      <div>
+      <label for="type">Type:</label>
+
+          <select name="type" id="type">
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+             
+         </select>
+        </div><br/>
+    <button type="submit" id ='submit' class="btn btn-default">create</button>
+  </form> 
+</div>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+<!-- <script>
+
+$(document).ready(function() {
+	$("form[id='form1']").validate({         
+        rules: {
+          name: {
+            required:true,
+            minlength:4
+          },
+          email:{
+            required:true,
+            email:true
+          },
+          mobile:{
+            required:true,
+            maxlength:10,
+            digits:true
+          },
+          type:{
+            required:true,
+
+          } ,
+		
+        },
+        messages: {
+          name: "Please enter the name", 
+          email:   "Please enter the email", 
+          mobile:  "Please enter the number",           
+         
+		},
+	
+		submitHandler: function(form) {
+		
+      const mydata={
+            name : $("#name").val(), 
+            email: $("#email").val(), 
+            mobile: $("#mobile").val(),
+            type:$()
+            };
+        
+      
+            $.ajax({ 
+           type: 'POST',
+           dataType: 'json',
+           url: 'http://localhost:5000/createuser',
+           data:JSON.stringify(mydata),
+           contentType: "application/json", 
+           success: function(res){
+            window.location.href="/users";
+           }
+          
+        });
+        
+
+      
+	} 
+	
+	 }); 
+              
+});
+              
+
+
+</script> -->
+
+
+<script> 
+   function transfer() { 
+      var name = document.forms["form1"]["name"];
+      // var name = document.form1.name;
+      var z = document.forms["form1"]["mobile"].value;
+      // var mobile = document.forms["form1"]["email"]; 
+      var email = document.forms["form1"]["email"]; 
+    
+      if (name.value == "") { 
+          window.alert( 
+            "Please enter your  name."); 
+          name.focus(); 
+          return false; 
+      } 
+
+          
+      if(!z.match(/^\d+/))
+        {
+        window.alert("Please enter the number! (Allowed input:0-9)")
+        }
+     
+
+      if (email.value == "") { 
+          window.alert( 
+            "Please enter your  email."); 
+          email.focus(); 
+          return false; 
+      } 
+
+     
+
+      
+
+      return true; 
+  } 
+    
+
+
+
+</script> 

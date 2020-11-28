@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>withdraw&deposit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Deposit/withdraw your Amount</h2>
+  <form action="/transaction/<%= result[0]._id %>"  method="POST">
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="text" class="form-control" id="amount" placeholder="Enter amount" name="amount">
+    </div>
+    <div>
+     <label for="currency">Currency</label>
+             <select name="currency" id="currency">
+              <option value="INR">INR</option>
+              <option value="DOLLAR">DOLLAR</option>
+             </select>
+        </div>
+        <div>
+            <label for="type">Type:</label>
+      
+                <select name="type" id="type">
+                    <option value="deposit">Deposit</option>
+                    <option value="withdraw">withdraw</option>
+                   
+               </select>
+              </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>
